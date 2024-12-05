@@ -43,15 +43,12 @@ local Checkkey = Tabs.KeySys:AddButton({
     Description = "Enter Key before pressing this button",
     Callback = function()
         local response = KeyGuardLibrary.validateDefaultKey(key)
-        if response == trueData then
+        local responsepremium = KeyGuardLibrary.validatePremiumKey(key)
+        if (response == trueData) or (responsepremium == trueData) then
            print("Key is valid")
+           -- Your code here
         else
-            local response = KeyGuardLibrary.validatePremiumKey(key)
-            if response == trueData then
-               print("Key is valid")
-            else
-                print("Key is invaild")
-            end
+           print("Key is invalid")
         end
     end
 })
